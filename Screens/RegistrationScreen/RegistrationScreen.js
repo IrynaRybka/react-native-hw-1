@@ -12,7 +12,7 @@ import {
   Pressable,
   // Dimensions,
 } from "react-native";
-import { useFonts, Roboto_400Regular } from "@expo-google-fonts/dev";
+
 import Union from "../../images/Union.svg";
 
 const formState = {
@@ -26,14 +26,9 @@ const formState = {
 export const RegistrationScreen = () => {
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [form, setForm] = useState(formState);
-  const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-  });
   const [isHovered, setIsHovered] = useState(false);
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  
   const handleHoverIn = () => {
     setIsHovered(true);
     setShowKeyboard(true)
@@ -78,14 +73,14 @@ export const RegistrationScreen = () => {
           }}
         >
           <View style={styles.content}>
-          <Text style={{ ...styles.text, fontFamily: "Roboto_400Regular" }}>
+          <Text style={styles.text}>
             Registration
           </Text>
           <View style={styles.form}>
             <View>
               <TextInput
                 style={{ ...styles.input, 
-                  ...(isHovered && styles.inputHovered), fontFamily: "Roboto_400Regular", }}
+                  ...(isHovered && styles.inputHovered) }}
                 placeholder="Login"
                 placeholderTextColor="#BDBDBD"
                 onFocus={handleHoverIn}
@@ -98,7 +93,7 @@ export const RegistrationScreen = () => {
             <View style={{ marginTop: 16 }}>
               <TextInput
                 style={{ ...styles.input, 
-                  ...(isHovered && styles.inputHovered), fontFamily: "Roboto_400Regular", }}
+                  ...(isHovered && styles.inputHovered) }}
                 placeholder="Email"
                 placeholderTextColor="#BDBDBD"
                 onFocus={handleHoverIn}
@@ -111,7 +106,7 @@ export const RegistrationScreen = () => {
             <View style={{ marginTop: 16 }}>
               <TextInput
                 style={{ ...styles.input, 
-                  ...(isHovered && styles.inputHovered), fontFamily: "Roboto_400Regular", }}
+                  ...(isHovered && styles.inputHovered) }}
                 secureTextEntry={true}
                 placeholder="Password"
                 placeholderTextColor="#BDBDBD"
@@ -128,13 +123,13 @@ export const RegistrationScreen = () => {
               onPress={onSubmitBtn}
             >
               <Text
-                style={{ ...styles.textBtn, fontFamily: "Roboto_400Regular" }}
+                style={styles.textBtn}
               >
                 Registration
               </Text>
             </TouchableOpacity>
           </View>
-          <Text style={{ ...styles.textExit, fontFamily: "Roboto_400Regular" }}>
+          <Text style={styles.textExit}>
             Already have an account? Exit
           </Text>
           </View>

@@ -11,7 +11,7 @@ import {
   TouchableWithoutFeedback,
   // Dimensions,
 } from "react-native";
-import { useFonts, Roboto_400Regular } from "@expo-google-fonts/dev";
+
 
 const formState = {
   email: "",
@@ -23,14 +23,9 @@ const formState = {
 export const LoginScreen = () => {
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [form, setForm] = useState(formState);
-  const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-  });
   const [isHovered, setIsHovered] = useState(false);
 
-  if (!fontsLoaded) {
-    return null;
-  }
+
   const handleHoverIn = () => {
     setIsHovered(true);
     setShowKeyboard(true)
@@ -71,14 +66,14 @@ export const LoginScreen = () => {
           }}
         >
           <View style={styles.content}>
-          <Text style={{ ...styles.text, fontFamily: "Roboto_400Regular" }}>
+          <Text style={styles.text}>
           Sign in
           </Text>
           <View style={styles.form}>
             <View style={{ marginTop: 16 }}>
               <TextInput
             style={{ ...styles.input, 
-                ...(isHovered && styles.inputHovered), fontFamily: "Roboto_400Regular", }}
+                ...(isHovered && styles.inputHovered) }}
                 placeholder="Email"
                 placeholderTextColor="#BDBDBD"
                 onFocus={handleHoverIn}
@@ -92,7 +87,7 @@ export const LoginScreen = () => {
             <View style={{ marginTop: 16 }}>
               <TextInput
                  style={{ ...styles.input, 
-                    ...(isHovered && styles.inputHovered), fontFamily: "Roboto_400Regular", }}
+                    ...(isHovered && styles.inputHovered) }}
                 secureTextEntry={true}
                 placeholder="Password"
                 placeholderTextColor="#BDBDBD"
@@ -109,13 +104,13 @@ export const LoginScreen = () => {
               onPress={onSubmitBtn}
             >
               <Text
-                style={{ ...styles.textBtn, fontFamily: "Roboto_400Regular" }}
+                style={styles.textBtn}
               >
                 Sign in
               </Text>
             </TouchableOpacity>
           </View>
-          <Text style={{ ...styles.textExit, fontFamily: "Roboto_400Regular" }}>
+          <Text style={styles.textExit}>
             Don`t have a registration? Registration
           </Text>
           </View>
